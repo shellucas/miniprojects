@@ -11,6 +11,7 @@ def get_divby7_notmulof5(lowbound, highbound):
 
 # print(numbers)
 
+
 """Question 2"""
 
 
@@ -23,6 +24,7 @@ def factorial(x):
 
 # number = int(input('Factorial of: '))
 # print(factorial(number))
+
 
 """Question 3"""
 
@@ -79,7 +81,7 @@ class Uppercaser:
 """Question 6"""
 
 
-def print_formula(sequence):
+def seq_to_formula(sequence):
     values = [int(x) for x in sequence.split(',')]
     q_dict = dict()
     c = 50
@@ -89,9 +91,72 @@ def print_formula(sequence):
     return q_dict
 
 
-int_seq = input('Comma separated integers: ')
-print(print_formula(int_seq).values())
+# int_seq = input('Comma separated integers: ')
+# print(print_seq_to_formula(int_seq).values())
 
 
 """Question 7"""
 
+
+def matrix(rows, columns):
+    return [[j * i for j in range(columns)] for i in range(rows)]
+
+
+# values = [int(x) for x in input('Row and Column separated: ').split(',')]
+# for row in matrix(values[0], values[1]):
+#     print(row)
+
+
+"""Question 8"""
+
+
+def sort_words(words):
+    return sorted(words)
+
+
+# values = input('Comma separated words: ').split(',')
+# print(",".join(word for word in sort_words(values)))
+
+
+"""Question 9"""
+
+
+def cap_sentences(sentences):
+    return [x.upper() for x in sentences]
+
+
+# lines = []
+# while True:
+#     sentence = input('Sentence: ')
+#     if sentence:
+#         lines.append(sentence)
+#     else:
+#         break
+#
+# for x in cap_sentences(lines):
+#     print(x)
+
+
+"""Question 10"""
+
+
+def unique_sorted(strings):
+    return sorted(set(strings))
+
+
+# words = input('Enter sequence of words: ').split(' ')
+# print(' '.join(unique_sorted(words)))
+
+
+"""Question 11"""
+
+
+def binary_div_by_5(binaries):
+    return [b for b in binaries if int(b, 2) % 5 == 0]
+
+
+# bins = input('Comma separated binaries: ').split(',')
+# print(','.join([str(x) for x in binary_div_by_5(bins)]))
+
+
+"""Question 12"""
