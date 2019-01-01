@@ -1,4 +1,6 @@
 """Question 1"""
+import operator
+import re
 from math import sqrt
 
 
@@ -160,3 +162,176 @@ def binary_div_by_5(binaries):
 
 
 """Question 12"""
+
+
+def even_digit_numbers(low, high):
+    even_numbers = []
+    for x in range(low, high + 1):
+        str_num = str(x)
+        is_even = True
+        for digit in str_num:
+            if int(digit) % 2 != 0:
+                is_even = False
+                break
+        if is_even:
+            even_numbers.append(int(str_num))
+    return even_numbers
+
+
+# print(','.join([str(x) for x in even_digit_numbers(1000, 3000)]))
+
+
+"""Question 13"""
+
+
+def count_letters_digits(line):
+    d = {'Letters': 0, 'Digits': 0}
+    for x in line:
+        if x.isdigit():
+            d['Digits'] += 1
+        elif x.isalpha():
+            d['Letters'] += 1
+    return d
+
+
+# string = input('Enter a string with digits and/or letters: ')
+# dic = count_letters_digits(string)
+# print('Letters:', dic['Letters'])
+# print('Digits:', dic['Digits'])
+
+
+"""Question 14"""
+
+
+def count_upper_lower(line):
+    d = {'upper': 0, 'lower': 0}
+    for letter in line:
+        if letter.isupper():
+            d['upper'] += 1
+        elif letter.islower():
+            d['lower'] += 1
+    return d
+
+
+# string = input('Enter a string: ')
+# dic = count_upper_lower(string)
+# print('UPPER CASE:', dic['upper'])
+# print('LOWER CASE:', dic['lower'])
+
+
+"""Question 15"""
+
+
+def compute_a(value):
+    a = int(value)
+    return (a
+            + int(str(a) + str(a))
+            + int(str(a) + str(a) + str(a))
+            + int(str(a) + str(a) + str(a) + str(a)))
+
+
+# print(compute_a(9))
+
+
+"""Question 16"""
+
+
+def odd_squared(line):
+    return [x**2 for x in line if x % 2 != 0]
+
+
+# s = [int(x) for x in input('Comma separated integers: ').split(',')]
+# print(','.join(str(x) for x in odd_squared(s)))
+
+
+"""Question 17"""
+
+
+def transaction(account, trans):
+    print(trans)
+    for line in trans:
+        t = line.split(' ')
+        op = t[0].upper()
+        amount = int(t[1])
+        if op == 'D':
+            account += amount
+        elif op == 'W':
+            account -= amount
+    return account
+
+
+# balance = 0
+# transactions = []
+# while True:
+#     function = input('Enter a transaction (format = [D or W] + space + amount)')
+#     if function:
+#         transactions.append(function)
+#     else:
+#         break
+#
+# print(transactions)
+# balance = transaction(balance, transactions)
+# print(balance)
+
+
+"""Question 18"""
+
+
+def password_check(passwords):
+    valid_passes = []
+    for password in passwords:
+        if len(password) < 6 or len(password) > 12:
+            continue
+        if not re.search('[a-z]', password):
+            continue
+        if not re.search('[0-9]', password):
+            continue
+        if not re.search('[A-Z]', password):
+            continue
+        if not re.search('[$#@]', password):
+            continue
+        valid_passes.append(password)
+    return valid_passes
+
+
+# line = input('Comma separated passwords: ').split(',')
+# print(','.join(x for x in password_check(line)))
+
+
+"""Question 19"""
+
+
+def sort_tuples(people):
+    return sorted(people, key=operator.itemgetter(0, 1, 2))
+
+
+# people_list = [('Tom', 19, 80),
+#                ('John', 20, 90),
+#                ('Jony', 17, 91),
+#                ('Jony', 17, 93),
+#                ('Json', 21, 85)]
+# print(sort_tuples(people_list))
+
+
+"""Question 20"""
+
+
+class DivisibleIter:
+
+    def __init__(self, n, div=7):
+        self.n = n
+        self.div = div
+
+    def __iter__(self):
+        for x in range(self.n):
+            if x % self.div == 0:
+                yield x
+            self.n = x
+
+
+i = DivisibleIter(100)
+for d in i:
+    print(d)
+
+for d in i:
+    print(d)
